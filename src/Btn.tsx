@@ -1,7 +1,13 @@
 import React from 'react';
 
+interface IProps {
+  operation?: string,
+  onClickFunc: () => void
+}
 
-function Btn({ operation='+' }) {
+function Btn( props: IProps) {
+
+  const { operation='+', onClickFunc } = props
 
   const makeText = () => {
     if (operation === '+') {
@@ -15,7 +21,10 @@ function Btn({ operation='+' }) {
 
   return (
     <div className="Btn">
-      <div data-test="btn-box">{makeText()}</div>
+      <button
+        data-test="btn-box"
+        onClick={() => onClickFunc()}
+        >{makeText()}</button>
 
     </div>
   );
